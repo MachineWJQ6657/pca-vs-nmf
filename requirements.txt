@@ -1,0 +1,23 @@
+# Python packages for the STOR 565 NMF-vs-PCA project notebook (STOR565_Project_Combined.ipynb: parts P1-P4).
+#
+# Lower bounds are the oldest versions at which the team's saved outputs were
+# produced (NumPy 2.3.2 / scikit-learn 1.7.1 for P2; scikit-learn 1.6.1 for the
+# original P4) or a documented feature requirement (Matplotlib >= 3.5 for
+# layout="constrained"). The reported numbers were identical on all of them.
+# The versions the whole project was last run and checked with are listed in
+# README.md ("Tested environment").
+
+numpy>=2.3
+scipy
+pandas
+matplotlib>=3.5
+scikit-learn>=1.6
+threadpoolctl
+
+# To open and run the notebooks:
+jupyterlab
+ipykernel
+
+# Optional: re-execute a notebook from the command line
+# (python -m nbconvert --to notebook --execute <notebook>.ipynb)
+nbconvert
