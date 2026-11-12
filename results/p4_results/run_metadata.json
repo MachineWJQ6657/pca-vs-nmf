@@ -1,0 +1,212 @@
+{
+  "data_sha256": "85be22755fab6319247cbfc7174e5afaf43c9a30c2f40ef14160418f10be4eef",
+  "component_count": 40,
+  "k_grid": [
+    5,
+    10,
+    25,
+    40,
+    50,
+    100
+  ],
+  "random_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "nmf_parameters": {
+    "alpha_H": 0.0,
+    "alpha_W": 0.0,
+    "beta_loss": "frobenius",
+    "init": "nndsvda",
+    "l1_ratio": 0.0,
+    "max_iter": 3000,
+    "n_components": 40,
+    "random_state": 42,
+    "shuffle": false,
+    "solver": "cd",
+    "tol": 0.0001,
+    "verbose": 0
+  },
+  "nmf_training_iterations": 1472,
+  "warnings": [],
+  "python_version": "3.13.18",
+  "numpy_version": "2.5.3",
+  "scipy_version": "1.18.1",
+  "sklearn_version": "1.9.1",
+  "results_k40": [
+    {
+      "Method": "PCA",
+      "Components": 40,
+      "Mean term": "yes",
+      "Train MSE": 0.0027960892084828996,
+      "Test MSE": 0.003658160970701781,
+      "Test MSE vs PCA (%)": 0.0
+    },
+    {
+      "Method": "PCA (39 components + mean)",
+      "Components": 39,
+      "Mean term": "yes",
+      "Train MSE": 0.002850986572681151,
+      "Test MSE": 0.003695870307278157,
+      "Test MSE vs PCA (%)": 1.0308276994476229
+    },
+    {
+      "Method": "Uncentered SVD",
+      "Components": 40,
+      "Mean term": "no",
+      "Train MSE": 0.002820310946287747,
+      "Test MSE": 0.0036579671030149627,
+      "Test MSE vs PCA (%)": -0.005299594205143698
+    },
+    {
+      "Method": "NMF",
+      "Components": 40,
+      "Mean term": "no",
+      "Train MSE": 0.0030786256106172293,
+      "Test MSE": 0.003946352411223382,
+      "Test MSE vs PCA (%)": 7.878041530422708
+    }
+  ],
+  "k_grid_results": [
+    {
+      "k": 5,
+      "PCA test MSE": 0.008859881957951723,
+      "NMF test MSE": 0.00902449868980485,
+      "NMF vs PCA (%)": 1.8580014116935661,
+      "NMF sweeps": 504,
+      "Hit iteration cap": false
+    },
+    {
+      "k": 10,
+      "PCA test MSE": 0.006847991567705358,
+      "NMF test MSE": 0.006976766424701941,
+      "NMF vs PCA (%)": 1.8804762786782003,
+      "NMF sweeps": 2056,
+      "Hit iteration cap": false
+    },
+    {
+      "k": 25,
+      "PCA test MSE": 0.004565366934911748,
+      "NMF test MSE": 0.004760360826821892,
+      "NMF vs PCA (%)": 4.271154864223714,
+      "NMF sweeps": 910,
+      "Hit iteration cap": false
+    },
+    {
+      "k": 40,
+      "PCA test MSE": 0.003658160970701781,
+      "NMF test MSE": 0.003946352411223382,
+      "NMF vs PCA (%)": 7.878041530422708,
+      "NMF sweeps": 1472,
+      "Hit iteration cap": false
+    },
+    {
+      "k": 50,
+      "PCA test MSE": 0.00333735228610592,
+      "NMF test MSE": 0.0035943868421465324,
+      "NMF vs PCA (%)": 7.70175078941171,
+      "NMF sweeps": 3000,
+      "Hit iteration cap": true
+    },
+    {
+      "k": 100,
+      "PCA test MSE": 0.0025033216525544885,
+      "NMF test MSE": 0.002942371639780275,
+      "NMF vs PCA (%)": 17.53869650661002,
+      "NMF sweeps": 3000,
+      "Hit iteration cap": true
+    }
+  ],
+  "init_sensitivity": [
+    {
+      "Variant": "nndsvda, tol 1e-4 (Person 3)",
+      "Sweeps": 1472,
+      "Hit iteration cap": false,
+      "Train MSE": 0.0030786256106172293,
+      "Test MSE": 0.003946352411223382,
+      "Test MSE vs PCA (%)": 7.878041530422708
+    },
+    {
+      "Variant": "nndsvda, tol 1e-5, up to 6000 sweeps",
+      "Sweeps": 6000,
+      "Hit iteration cap": true,
+      "Train MSE": 0.0030594120378417376,
+      "Test MSE": 0.003919108474022807,
+      "Test MSE vs PCA (%)": 7.133297452215892
+    },
+    {
+      "Variant": "random init, seed 0",
+      "Sweeps": 3000,
+      "Hit iteration cap": true,
+      "Train MSE": 0.003059991151374955,
+      "Test MSE": 0.0038590867010465076,
+      "Test MSE vs PCA (%)": 5.492533870268179
+    },
+    {
+      "Variant": "random init, seed 1",
+      "Sweeps": 3000,
+      "Hit iteration cap": true,
+      "Train MSE": 0.0030635632245025056,
+      "Test MSE": 0.0038674256906401374,
+      "Test MSE vs PCA (%)": 5.7204896562605745
+    },
+    {
+      "Variant": "random init, seed 2",
+      "Sweeps": 3000,
+      "Hit iteration cap": true,
+      "Train MSE": 0.0030541065024177437,
+      "Test MSE": 0.0038740730544776095,
+      "Test MSE vs PCA (%)": 5.9022029239574
+    },
+    {
+      "Variant": "random init, seed 3",
+      "Sweeps": 3000,
+      "Hit iteration cap": true,
+      "Train MSE": 0.003060738968357804,
+      "Test MSE": 0.0038712717424328386,
+      "Test MSE vs PCA (%)": 5.825625866052975
+    },
+    {
+      "Variant": "random init, seed 4",
+      "Sweeps": 3000,
+      "Hit iteration cap": true,
+      "Train MSE": 0.003059524750338194,
+      "Test MSE": 0.0038987139059723044,
+      "Test MSE vs PCA (%)": 6.575788687187711
+    }
+  ],
+  "paired_comparison": {
+    "mean_difference": 0.0002881914405216022,
+    "ci95": [
+      0.0002329640795017258,
+      0.0003438675324970161
+    ],
+    "pca_better_on": 74,
+    "n_images": 80
+  },
+  "matches_person3_reported": {
+    "train_mse": true,
+    "test_mse": true,
+    "iters": true
+  },
+  "matches_person2_reported_pca": {
+    "5": true,
+    "10": true,
+    "25": true,
+    "50": true,
+    "100": true
+  },
+  "text_checks_passed": true,
+  "test_example_positions": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "error_definition": "Mean squared pixel error, without reconstruction clipping",
+  "runtime_seconds": 412.5
+}

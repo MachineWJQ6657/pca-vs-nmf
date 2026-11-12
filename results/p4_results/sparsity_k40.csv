@@ -1,0 +1,6 @@
+Quantity,NMF,PCA (absolute loadings)
+Mean Hoyer sparsity of the 40 patterns,0.317,0.221
+Range of Hoyer sparsity,0.22 to 0.52,0.05 to 0.28
+Exact zeros in H,18.7%,not applicable
+Exact zeros in W (training),25.5%,not applicable
+Mean nonzero coefficients per training image,29.8 of 40,40 of 40

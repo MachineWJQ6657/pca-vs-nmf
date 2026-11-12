@@ -15,16 +15,18 @@ Replace "Person N" with names before submitting.
 |---|---|---|---|
 | Person 1 | Data preprocessing + PCA implementation | "PART P1" | original cells, copied unchanged |
 | Person 2 | PCA analysis | "PART P2" | original cells, copied unchanged |
-| Person 3 | NMF implementation | "PART P3" | original cells; one `print` line changed (marked) |
+| Person 3 | NMF implementation | "PART P3" | original code; text translated to English; one `print` line changed (marked) |
 | Person 4 | NMF theory and analysis | "PART P4" | revised and extended (main part) |
 | — | Results showcase for the talk | "RESULTS SHOWCASE" | new |
 
 Every cell copied from a teammate's notebook has the cell tag `original-P1`, `original-P2` or
-`original-P3`, and its source text is identical to the original notebook, with one approved exception:
-in P3's last code cell (also tagged `modified-P3`) the final `print` shows the relative output folder
-instead of an absolute path on the author's computer; the line carries a comment saying so. The only
-cells that are not from P1–P4 are the overview at the top and the short "Setup" cell (integration glue), which puts the
-data file where P1/P2 and P3 each expect it.
+`original-P3`. P1 and P2 are identical to the original notebooks. P3 was written in Chinese; its text
+(markdown, code comments, printed messages) is translated into English (cells tagged `translated-P3`), and
+its code is unchanged except one approved edit: in P3's last code cell (also tagged `modified-P3`) the final
+`print` shows the relative output folder instead of an absolute path on the author's computer; the line
+carries a comment saying so. A comparison of the code syntax trees against the original confirms this. The
+only cells that are not from P1–P4 are the overview at the top and the short "Setup" cell (integration glue),
+which puts the data file where P1/P2 and P3 each expect it.
 
 ## Folder layout
 
@@ -32,12 +34,19 @@ data file where P1/P2 and P3 each expect it.
 project/
 ├── README.md
 ├── requirements.txt
-├── STOR565_Project_Combined.ipynb
+├── STOR565_Project_Combined.ipynb  (the code; saved with outputs from one full run)
 ├── data/olivetti_preprocessed.npz
 ├── make_data.py                    (rebuilds / checks the data file)
-└── (created when you run it)  pca_results/  outputs/team_nmf/  p4_results/  showcase/
-                               pca_eigenfaces.png  pca_reconstruction_k50.png
+├── report/                         (LaTeX source main.tex, figs/, compiled STOR565_Report.pdf)
+├── slides/STOR565_slides_preview.pdf   (static preview of the talk slides)
+├── results/                        (figures and tables from the saved run; large .npz files omitted)
+└── (created when you run the notebook)  pca_results/  outputs/team_nmf/  p4_results/  showcase/
+                                         pca_eigenfaces.png  pca_reconstruction_k50.png
 ```
+
+The `results/` folder is a copy of what the notebook writes, kept so the figures and tables can be read
+without running anything; running the notebook writes fresh copies next to it. To rebuild the report,
+run `pdflatex main.tex` twice in `report/` (the figures are in `report/figs/`).
 
 The setup cell looks for the data in `.`, `data/`, `../data/` and `upload/`, and copies it to the two
 places the original parts read from (the notebook's folder for P1/P2, and `data/` for P3).
@@ -100,13 +109,11 @@ Measured on a 2-core cloud container, one run of the whole notebook:
 | P1 | a few seconds | `pca_eigenfaces.png`, `pca_reconstruction_k50.png` |
 | P2 | ≈ 10 s | `pca_results/` |
 | P3 | ≈ 25 s | `outputs/team_nmf/` |
-| P4 | ≈ 8–9 min | `p4_results/` |
+| P4 | ≈ 7 min | `p4_results/` |
 | Showcase | a few seconds | `showcase/` |
 
-In Part P4 the slow sections are the component-count grid (6.1) and the initialization study (6.2).
-Setting `QUICK = True` in P4's setup cell uses a smaller grid (k up to 50) and two random starts, and
-takes about half as long; all of P4's built-in consistency checks also pass in that mode. (The showcase
-then shows the smaller grid.)
+In Part P4 the slow sections are the component-count grid (6.1) and the initialization study (6.2);
+together they account for most of the run time.
 
 ## What a correct run prints
 
@@ -158,9 +165,9 @@ assertion error if they do not.
   and the computed values" fails if a claim in the written analysis is no longer supported by the run.
   If it fails after you change the data or settings, revisit the text rather than deleting the check.
 - **Figures.** `p4_results/`: `01_components`, `02_additive_reconstruction`, `03_matched_reconstructions`,
-  `04_convergence`, `05_sparsity`, `06_paired_errors`, `07_k_grid`, `08_init_sensitivity`;
-  `showcase/`: `headline_results`, `gallery_pca_vs_nmf`. Tables are saved as CSV; `run_metadata.json`
-  records the data hash, library versions and settings.
+  `04_convergence`, `06_paired_errors`, `07_k_grid`; `showcase/`: `headline_results`. Tables are saved as
+  CSV (`comparison_k40`, `k_grid`, `sparsity_k40`, `init_sensitivity_k40`); `run_metadata.json` records the
+  data hash, library versions and settings.
 - **References.** Titles, authors, venues and pages were checked against publisher or arXiv pages,
   except the page range of Lee & Seung (2001), which is omitted, and the journal version of Vavasis,
   which is cited through its arXiv report. Check both before citing them in the report.
@@ -172,13 +179,14 @@ assertion error if they do not.
   rounding). Part P4 reports its cross-check against Persons 2 and 3 as `True`/`False` without stopping
   the run; a `False` with differences in the last digits is not a bug, but a large difference is. The
   showcase's cross-part check uses a tight relative tolerance (1e-8) and will stop the run if it is not met.
-- The notebook takes about 9 minutes: use `QUICK = True` in Part P4's setup cell.
+- The notebook takes several minutes (see "Run times"), almost all of it in Part P4; this is normal.
 
 ## AI assistance
 
 Claude (Anthropic) was used to review the Person 4 notebook against the course requirements and the other
 team notebooks, to add the analyses in P4 Sections 3.1, 4.1, 5 and 6, to merge the four parts into one
-notebook, to write the results showcase, and to draft this README and `requirements.txt`. All numbers
+notebook, to translate the text of Part P3 into English, to write the results showcase, and to draft this
+README, `requirements.txt`, the LaTeX report and the slides. All numbers
 above were produced by running the code. Record what was delegated, what was kept, and your own checks in
 the report's AI appendix.
 
