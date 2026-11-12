@@ -38,7 +38,8 @@ project/
 ├── data/olivetti_preprocessed.npz
 ├── make_data.py                    (rebuilds / checks the data file)
 ├── report/                         (LaTeX source main.tex, figs/, compiled STOR565_Report.pdf)
-├── slides/STOR565_slides_preview.pdf   (static preview of the talk slides)
+├── slides/                         (STOR565_Slides.pptx = editable talk slides with speaker notes;
+│                                    STOR565_slides_preview.pdf = static preview)
 ├── results/                        (figures and tables from the saved run; large .npz files omitted)
 └── (created when you run the notebook)  pca_results/  outputs/team_nmf/  p4_results/  showcase/
                                          pca_eigenfaces.png  pca_reconstruction_k50.png
